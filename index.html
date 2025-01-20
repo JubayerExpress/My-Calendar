@@ -3,10 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Live Calendar</title>
+    <title>Live Calendar with Events</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="theme-toggle">
+        <button onclick="toggleTheme()">Toggle Theme</button>
+    </div>
+    
     <div class="calendar">
         <div class="month">
             <div class="prev" onclick="moveDate('prev')">&#10094;</div>
@@ -28,7 +32,13 @@
         <div class="days"></div>
     </div>
 
+    <div class="event-form">
+        <h3>Add Event</h3>
+        <input type="text" id="eventName" placeholder="Event Name">
+        <button onclick="addEvent()">Add Event</button>
+        <ul id="eventList"></ul>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
-
