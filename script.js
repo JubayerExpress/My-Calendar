@@ -1,5 +1,6 @@
 let dt = new Date();
 let events = {}; // Store events in an object
+let selectedDate = null;
 
 function renderDate() {
     dt.setDate(1);
@@ -50,9 +51,9 @@ function renderDate() {
             dt.getMonth() === today.getMonth() &&
             dt.getFullYear() === today.getFullYear()
         ) {
-            days += `<div class="today" onclick="selectDate(${i})">${i}</div>`;
+            days += `<div class="today" onclick="openModal(${i})">${i}</div>`;
         } else {
-            days += `<div onclick="selectDate(${i})">${i}</div>`;
+            days += `<div onclick="openModal(${i})">${i}</div>`;
         }
     }
 
@@ -68,9 +69,19 @@ function moveDate(direction) {
     renderDate();
 }
 
+function openModal(day) {
+    selectedDate = new Date(dt.getFullYear(), dt.getMonth(), day).toDateString();
+    document.getElementById('modalDate').innerText = selectedDate;
+    updateEventList();
+    document.getElementById('eventModal').style.display = 'flex';
+}
+
+function closeModal() {
+    document.getElementById('eventModal').style.display = 'none';
+}
+
 function addEvent() {
     const eventName = document.getElementById("eventName").value;
-    const selectedDate = dt.toDateString();
 
     if (!events[selectedDate]) {
         events[selectedDate] = [];
@@ -83,7 +94,6 @@ function addEvent() {
 
 function updateEventList() {
     const eventList = document.getElementById("eventList");
-    const selectedDate = dt.toDateString();
     eventList.innerHTML = ""; // Clear the list before updating
 
     if (events[selectedDate]) {
@@ -95,15 +105,8 @@ function updateEventList() {
     }
 }
 
-function selectDate(day) {
-    dt.setDate(day);
-    updateEventList(); // Show events for the selected date
-    renderDate(); // Re-render the calendar
-}
-
 function toggleTheme() {
     document.body.classList.toggle("dark-mode");
 }
 
-// Initial render
-renderDate();
+//
