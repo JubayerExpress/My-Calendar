@@ -6,11 +6,14 @@
 
 body {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
     font-family: Arial, sans-serif;
-    background-color: #f4f4f9;
+    background-color: var(--bg-color, #f4f4f9);
+    color: var(--text-color, #000);
+    transition: background-color 0.3s, color 0.3s;
 }
 
 .calendar {
@@ -20,6 +23,7 @@ body {
     border-radius: 10px;
     background-color: #fff;
     overflow: hidden;
+    margin-bottom: 20px;
 }
 
 .month {
@@ -29,15 +33,6 @@ body {
     padding: 20px;
     background-color: #1abc9c;
     color: #fff;
-}
-
-.month .prev, .month .next {
-    cursor: pointer;
-    font-size: 20px;
-}
-
-.month .date {
-    text-align: center;
 }
 
 .weekdays, .days {
@@ -52,11 +47,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.weekdays {
-    background-color: #eee;
-    font-weight: bold;
 }
 
 .days div {
@@ -74,3 +64,49 @@ body {
     border-radius: 50%;
 }
 
+.event-form {
+    text-align: center;
+}
+
+.event-form input {
+    padding: 5px;
+    margin-bottom: 10px;
+    width: 200px;
+}
+
+#eventList {
+    list-style: none;
+    padding: 0;
+}
+
+#eventList li {
+    margin: 5px 0;
+    padding: 5px;
+    background-color: #f4f4f9;
+    border: 1px solid #ddd;
+}
+
+.theme-toggle {
+    margin-bottom: 20px;
+}
+
+@media screen and (max-width: 600px) {
+    .calendar {
+        width: 100%;
+        height: auto;
+    }
+
+    .weekdays div, .days div {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+body.dark-mode {
+    --bg-color: #333;
+    --text-color: #fff;
+}
+
+body.light-mode {
+    --bg-color: #f4f4f9;
+    --text
