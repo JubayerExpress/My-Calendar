@@ -1,1 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Live Calendar</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="calendar-container">
+        <div class="calendar-header">
+            <button id="prev-month">&lt;</button>
+            <div id="month-year"></div>
+            <button id="next-month">&gt;</button>
+        </div>
+        <div class="calendar-body">
+            <div class="days-of-week">
+                <div>Sun</div>
+                <div>Mon</div>
+                <div>Tue</div>
+                <div>Wed</div>
+                <div>Thu</div>
+                <div>Fri</div>
+                <div>Sat</div>
+            </div>
+            <div class="dates-grid" id="dates-grid"></div>
+        </div>
+    </div>
+
+    <div class="event-container">
+        <h2>Events on <span id="selected-date"></span></h2>
+        <ul id="event-list"></ul>
+        <input type="text" id="event-input" placeholder="Enter event name">
+        <button id="add-event">Add Event</button>
+    </div>
+
+    <button id="theme-toggle">Toggle Theme</button>
+
+    <script src="script.js"></script>
+</body>
+</html>
 
